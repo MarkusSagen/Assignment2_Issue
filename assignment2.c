@@ -6,82 +6,62 @@
 void event_loop(db_t *db)
 {
   int answer = 0;
+  
+
   do {
-    
-    answer = ask_question_menu("Vad vill du göra?");
-    if (answer=='L')
-      {
-        insert_item_to_db(db);
+      answer = ask_question_menu("What would you like to do?");
 
+      switch(answer) {
+        case 'A' :    // Add ware
+          insert_item_to_db(db);
+          break;
+        case 'R' :    // Remove ware
+          remove_item_from_db(db);
+          break;
+        case 'E' :    // Edit ware   
+          edit_db(db);
+          break;
+        case 'L' :    // List ware
+          print_merch(db);
+          break;
+        case 'S' :    // Show stock 
+          show_stock(db);
+          break;
+        case 'I' :    // Increase stock
+          replenish_item(db);
+          break;
+        case 'M' :    // Make new cart
+          add_cart(db);
+          break;
+        case 'D' :    // Delete cart
+          remove_cart(db);
+          break;
+        case 'B' :    // Begin shopping
+          add_to_cart(db);
+          break;
+        case 'P' :    // Place back ware from cart
+          remove_from_cart(db);
+          break;
+        case 'C' :    // Checkout
+          checkout(db);   
+          break;
+        case 'U' :    // Undo
+          printf("Not yet implemented\n");
+          break;
+        case 'Q' :    // Quit
+          break;
+        default: 
+          ;
       }
-    else if(answer=='T')
-      {
-        remove_item_from_db(db);
-
-      }
-    else if (answer=='R')
-      {
-        edit_db(db);
-
-      }
-    else if (answer== 'G')
-      {
-        printf("Not yet implemented\n");
-
-      }
-    else if (answer=='H')
-      {
-        print_merch(db);
-
-      }
-    else if (answer== 'V')
-      {
-        show_stock(db);
-
-      }
-    else if (answer == 'E')
-      {
-        replenish_item(db);
-
-      }
-    else if(answer== 'K')
-      {
-        add_cart(db);
       
-      }
-    else if(answer== 'N')
-      {
-        remove_cart(db);
-      
-      }
-    else if(answer =='B')
-      {
-        add_to_cart(db);
-      
-      }
-    else if (answer == 'U')
-      {
-        remove_from_cart(db);
-      
-      }
-    else if (answer== 'C')
-      {
-        checkout(db);     
-      }
-  } while (answer != 'A');
-   destroy_db(db);
+    } while (answer != 'Q');
+      destroy_db(db);
 }
 
 int main()
 {
   db_t *db = create_db();
   event_loop(db);
-  /* insert_item_to_db(db);
-  insert_item_to_db(db);
-  insert_item_to_db(db);
-  add_cart(db);
-  add_to_cart(db);
-  add_to_cart(db);
-  remove_from_cart(db);
-  */
 }
+
+

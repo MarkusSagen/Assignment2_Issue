@@ -19,8 +19,7 @@ void destroy_db(db_t *db);
 int cmpstringp(const void *p1, const void *p2);
 int cmpshelfsp(const void *p1, const void *p2);
 
-///TODO: FIXA FUNKTIONSSPECAR
-///NYA FUNKTIONER
+
 void add_cart_to_db(db_t* db, char *id);
 void update_stock_of_item(db_t *db, char *name, char *shelf, int amount);
 void add_item_to_cart(cart_t *cart, item_t *merch, int amount);

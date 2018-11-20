@@ -1,4 +1,7 @@
 main: utils.c iterator.c linked_list.c hash_table.c backend.c frontend.c
+	gcc -Wall -g assignment2.c utils.c iterator.c linked_list.c frontend.c backend.c hash_table.c 
+
+run: utils.c iterator.c linked_list.c hash_table.c backend.c frontend.c
 	gcc -Wall -g assignment2.c utils.c iterator.c linked_list.c frontend.c backend.c hash_table.c && ./a.out
 
 mem: utils.c iterator.c linked_list.c hash_table.c backend.c frontend.c
